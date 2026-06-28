@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SnapBite — Pitch Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="SnapBite%20%E2%80%94%20Pitch%20Deck_files/css2.css" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --g:#3B6D11; --gl:#EAF3DE; --gm:#639922;
+  --am:#BA7517; --al:#FAEEDA;
+  --tl:#0F6E56; --tll:#E1F5EE;
+  --cr:#2a5a0a;
+  --white:#ffffff; --bg:#edf0e8;
+  --text:#1a1a1a; --text2:#505050;
+  --border:rgba(0,0,0,0.09);
+  --fh:'Plus Jakarta Sans','Trebuchet MS','Gill Sans',Arial,sans-serif;
+  --fb:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+html,body{height:100%;width:100%;overflow:hidden;font-family:var(--fb);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;}
+.shell{display:flex;flex-direction:column;height:100vh;width:100vw;}
+
+/* TOPBAR */
+.topbar{display:flex;align-items:center;gap:16px;padding:0 32px;height:60px;background:var(--g);color:#fff;flex-shrink:0;}
+.logo{display:flex;align-items:center;flex-shrink:0;}
+.top-nav{display:flex;gap:4px;flex:1;justify-content:center;overflow:hidden;flex-wrap:nowrap;}
+.nb{font-family:var(--fb);font-size:12px;padding:6px 16px;border-radius:20px;border:1px solid rgba(255,255,255,0.22);background:transparent;color:rgba(255,255,255,0.68);cursor:pointer;transition:all 0.16s;white-space:nowrap;flex-shrink:0;}
+.nb:hover,.nb.active{background:rgba(255,255,255,0.18);color:#fff;border-color:rgba(255,255,255,0.5);}
+.slide-ctr{font-size:13px;opacity:0.6;white-space:nowrap;flex-shrink:0;}
+
+/* SLIDE AREA */
+.slide-area{flex:1;overflow-y:auto;overflow-x:hidden;padding:32px 40px;scroll-behavior:smooth;}
+.slide{display:none;max-width:1140px;margin:0 auto;animation:fu 0.25s ease both;}
+.slide.active{display:block;}
+@keyframes fu{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+/* BOTTOM BAR */
+.bottombar{display:flex;align-items:center;height:46px;padding:0 28px;background:var(--white);border-top:1px solid var(--border);flex-shrink:0;gap:14px;}
+.prog-track{flex:1;height:4px;background:#dde5d8;border-radius:4px;overflow:hidden;}
+.prog-fill{height:100%;background:var(--g);border-radius:4px;transition:width 0.3s ease;width:14.29%;}
+.btn{font-family:var(--fb);font-size:14px;font-weight:500;padding:7px 20px;border-radius:8px;border:1px solid var(--border);background:var(--white);color:var(--text);cursor:pointer;transition:background 0.14s;flex-shrink:0;}
+.btn:hover{background:#f0f0ee;}
+.btn.primary{background:var(--g);color:#fff;border-color:var(--g);}
+.btn.primary:hover{background:#2f5a0d;}
+
+/* COVER */
+.cover-block{background:var(--g);border-radius:18px;padding:52px 56px 44px;color:#fff;position:relative;overflow:hidden;margin-bottom:22px;}
+.cover-block::before{content:'';position:absolute;right:-60px;top:-60px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,0.05);}
+.cover-block::after{content:'';position:absolute;right:80px;bottom:-80px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.04);}
+.ctag{font-size:13px;letter-spacing:2.5px;text-transform:uppercase;opacity:0.5;margin-bottom:14px;}
+.cover-block h1{font-family:var(--fh);font-size:68px;font-weight:800;line-height:1;margin-bottom:16px;}
+.cover-block h1 span{color:#C0DD97;}
+.cover-sub{font-size:19px;opacity:0.78;font-weight:300;margin-bottom:34px;max-width:580px;line-height:1.55;}
+.cstats{display:flex;gap:44px;flex-wrap:wrap;}
+.cs-val{font-family:var(--fh);font-size:28px;font-weight:800;color:#C0DD97;}
+.cs-lbl{font-size:13px;opacity:0.58;margin-top:3px;}
+
+/* SLIDE HEADINGS */
+.slide-title{font-family:var(--fh);font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;}
+.slide-sub{font-size:16px;color:var(--text2);margin-bottom:22px;line-height:1.5;}
+
+/* CARDS */
+.card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-bottom:14px;}
+.card-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.icon-circle{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.ig{background:var(--gl);} .ia{background:var(--al);} .it{background:var(--tll);}
+.card h3{font-family:var(--fh);font-size:16px;font-weight:700;color:var(--text);}
+.card p,.card-text{font-size:15px;color:var(--text2);line-height:1.65;}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:14px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px;}
+
+/* METRIC TILES */
+.metric-tile{background:rgba(59,109,17,0.08);border-radius:12px;padding:18px;text-align:center;}
+.metric-val{font-family:var(--fh);font-size:28px;font-weight:800;color:var(--g);}
+.metric-lbl{font-size:14px;color:var(--text2);margin-top:5px;}
+
+/* STRIPS */
+.strip{padding:14px 20px;margin-bottom:14px;}
+.s-amber{border-left:4px solid var(--am);background:var(--al);border-radius:0 10px 10px 0;}
+.s-amber p{font-size:15px;color:var(--am);font-weight:500;}
+.s-amber small{font-size:14px;color:var(--text2);display:block;margin-top:3px;}
+.s-teal{border-left:4px solid var(--tl);background:var(--tll);border-radius:0 10px 10px 0;}
+.s-teal p{font-size:15px;color:var(--tl);font-weight:500;}
+.s-green{border-left:4px solid var(--g);background:var(--gl);border-radius:0 10px 10px 0;}
+.s-green p{font-size:15px;color:var(--g);font-weight:500;}
+.s-green small{font-size:14px;color:var(--g);opacity:0.8;display:block;margin-top:3px;}
+
+/* HIGHLIGHT BOX */
+.hbox{background:var(--gl);border-radius:14px;padding:18px 22px;margin-bottom:14px;}
+.hbox h4{font-family:var(--fh);font-size:17px;color:var(--g);margin-bottom:7px;}
+.hbox p{font-size:15px;color:var(--g);opacity:0.88;line-height:1.6;}
+
+/* STAT ROWS */
+.stat-row{display:flex;align-items:flex-start;gap:18px;padding:16px 20px;background:var(--white);border:1px solid var(--border);border-radius:12px;margin-bottom:12px;}
+.stat-num{font-family:var(--fh);font-size:22px;font-weight:800;color:var(--cr);min-width:96px;flex-shrink:0;line-height:1.3;}
+.stat-text{font-size:15px;color:var(--text2);line-height:1.65;flex:1;}
+
+/* TIERS */
+.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px;}
+.tier-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px 18px;}
+.tier-card.featured{border:2.5px solid var(--g);}
+.tier-badge{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:7px;}
+.tier-name{font-family:var(--fh);font-size:20px;font-weight:800;color:var(--text);margin-bottom:5px;}
+.tier-price{font-size:24px;font-weight:700;color:var(--g);margin-bottom:11px;}
+.tier-price span{font-size:13px;color:var(--text2);font-weight:400;}
+.tier-feat{font-size:14px;color:var(--text2);padding:5px 0;border-top:1px solid #eee;line-height:1.4;}
+
+/* PARTNERS */
+.partner-row{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:var(--white);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;}
+.partner-logo{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex-shrink:0;margin-top:2px;}
+.partner-name{font-size:15px;font-weight:500;color:var(--text);margin-bottom:4px;}
+.partner-desc{font-size:15px;color:var(--text2);line-height:1.55;}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:28px;}
+.timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--gl);border-radius:2px;}
+.tl-item{position:relative;margin-bottom:22px;}
+.tl-dot{position:absolute;left:-28px;top:4px;width:13px;height:13px;border-radius:50%;border:2.5px solid var(--g);background:var(--bg);}
+.tl-phase{font-size:12px;font-weight:700;color:var(--g);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;}
+.tl-title{font-size:17px;font-weight:500;color:var(--text);margin-bottom:4px;}
+.tl-desc{font-size:15px;color:var(--text2);line-height:1.55;}
+
+/* BUDGET BARS */
+.budget-item{margin-bottom:14px;}
+.budget-row{display:flex;justify-content:space-between;font-size:15px;margin-bottom:5px;}
+.budget-label{color:var(--text2);}
+.budget-amount{font-weight:500;color:var(--text);}
+.bar-track{height:8px;background:#e0e8d0;border-radius:4px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:4px;}
+
+/* WHY CARDS */
+.why-card{display:flex;align-items:flex-start;gap:18px;background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin-bottom:12px;}
+.why-num{font-family:var(--fh);font-size:30px;font-weight:800;color:#c8e4a0;min-width:50px;flex-shrink:0;line-height:1;}
+.why-title{font-family:var(--fh);font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.why-text{font-size:15px;color:var(--text2);line-height:1.65;}
+
+/* MRR */
+.mrr-box{background:var(--gl);border-left:4px solid var(--g);border-radius:0 14px 14px 0;padding:20px 22px;margin-bottom:14px;}
+.mrr-box h4{font-family:var(--fh);font-size:16px;color:var(--g);margin-bottom:8px;}
+.mrr-box p{font-size:15px;color:var(--g);line-height:1.6;opacity:0.9;}
+.mrr-eg{background:var(--white);border-radius:10px;padding:14px 18px;margin-top:12px;font-size:15px;color:var(--text2);line-height:1.6;}
+.mrr-eg strong{color:var(--g);}
+
+/* PHONES */
+.phones-wrap{display:flex;gap:18px;justify-content:center;flex-wrap:nowrap;padding:28px;background:#dce5d4;border-radius:18px;margin-bottom:16px;}
+.phone-outer{width:172px;background:#111;border-radius:26px;padding:7px;border:5px solid #1c1c1c;flex-shrink:0;}
+.phone-screen{background:#f7f9f1;border-radius:19px;overflow:hidden;min-height:300px;}
+.phone-status{background:#f7f9f1;padding:7px 14px 3px;display:flex;justify-content:space-between;font-size:8.5px;color:#666;}
+.phone-header{background:#fff;padding:9px 14px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:7px;}
+.phone-logo{width:21px;height:21px;background:var(--g);border-radius:6px;display:flex;align-items:center;justify-content:center;}
+.phone-logo-dot{width:9px;height:9px;background:#fff;border-radius:50%;}
+.phone-app-name{font-size:12.5px;font-weight:600;color:#111;}
+.phone-body{padding:11px;}
+.phone-label{font-size:8.5px;font-weight:700;color:var(--g);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:7px;}
+.phone-img{background:#e5ede0;border-radius:11px;height:90px;display:flex;align-items:center;justify-content:center;margin-bottom:9px;font-size:28px;position:relative;overflow:hidden;}
+.scan-line{position:absolute;left:10px;right:10px;height:1.5px;background:var(--gm);border-radius:2px;animation:scanA 2s ease-in-out infinite;}
+.scan-ring{position:absolute;inset:8px;border:2px solid var(--gm);border-radius:9px;}
+@keyframes scanA{0%{top:14px;}50%{top:72px;}100%{top:14px;}}
+.macro-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:8px;}
+.macro-box{background:#fff;border-radius:6px;padding:4px 3px;text-align:center;border:1px solid #d5e8c0;}
+.macro-val{font-size:12.5px;font-weight:700;color:#3B6D11;}
+.macro-lbl{font-size:7px;color:#888;margin-top:1px;}
+.r-pill{background:#fff;border-radius:9px;padding:5px 8px;margin-bottom:4px;border:1px solid #d5e8c0;font-size:9.5px;color:#333;display:flex;justify-content:space-between;align-items:center;}
+.r-tag{background:#EAF3DE;color:#3B6D11;font-size:8px;padding:1px 5px;border-radius:8px;font-weight:600;}
+.r-tag-red{background:#FCEBEB;color:#A32D2D;font-size:8px;padding:1px 5px;border-radius:8px;font-weight:600;}
+.order-btn{background:var(--g);color:#fff;font-size:9px;padding:6px 8px;border-radius:9px;text-align:center;margin-top:6px;}
+.order-btn-purple{background:#6B2D8B;color:#fff;font-size:9px;padding:6px 8px;border-radius:9px;text-align:center;margin-top:4px;}
+.ing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:8px;}
+.ing-box{background:#fff;border-radius:8px;padding:6px;text-align:center;border:1px solid #d5e8c0;}
+.ing-icon{font-size:17px;display:block;margin-bottom:2px;}
+.ing-lbl{font-size:8px;color:#555;}
+.phone-cap{font-size:14px;font-weight:500;color:var(--text);text-align:center;margin-top:10px;}
+.phone-cap2{font-size:13px;color:var(--text2);text-align:center;}
+
+/* DEMO STEPS */
+.demo-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;}
+.demo-step{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;}
+.step-num{font-family:var(--fh);font-size:28px;font-weight:800;color:#c8e4a0;}
+.step-label{font-size:14px;font-weight:500;color:var(--text);margin-top:5px;}
+.step-sub{font-size:13px;color:var(--text2);margin-top:2px;}
+
+/* PORTION CALCULATOR */
+.calc-wrap{background:rgba(59,109,17,0.07);border-radius:16px;padding:26px;margin-bottom:16px;}
+.calc-lbl{font-size:14px;font-weight:500;color:var(--text);margin-bottom:16px;}
+.sex-toggle{display:flex;gap:8px;margin-bottom:18px;}
+.sex-btn{font-size:13px;padding:6px 20px;border-radius:20px;border:1px solid #bbb;background:var(--white);color:var(--text2);cursor:pointer;transition:all 0.16s;}
+.sex-btn.on{background:var(--g);color:#fff;border-color:var(--g);}
+.calc-row{display:flex;align-items:center;gap:16px;margin-bottom:14px;}
+.calc-row label{font-size:13.5px;color:var(--text2);min-width:110px;flex-shrink:0;}
+.calc-row input[type=range]{flex:1;accent-color:var(--g);cursor:pointer;}
+.calc-row .val{font-size:14px;font-weight:500;min-width:50px;color:var(--text);text-align:right;}
+.calc-results{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
+.result-box{background:var(--white);border-radius:12px;padding:18px;text-align:center;border:1px solid var(--border);}
+.result-val{font-family:var(--fh);font-size:30px;font-weight:800;color:var(--g);}
+.result-lbl{font-size:12px;color:var(--text2);margin-top:5px;}
+
+/* ASK */
+.ask-cover{background:var(--g);border-radius:18px;padding:52px 56px 44px;color:#fff;position:relative;overflow:hidden;margin-bottom:22px;}
+.ask-cover::before{content:'';position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.05);}
+.ask-cover h1{font-family:var(--fh);font-size:54px;font-weight:800;line-height:1.05;margin-bottom:16px;}
+.ask-cover h1 span{color:#C0DD97;}
+.ask-cover p{font-size:17px;opacity:0.8;font-weight:300;margin-bottom:30px;max-width:540px;line-height:1.55;}
+
+/* SOURCE LINKS */
+a.src{color:inherit;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px;opacity:0.85;transition:opacity 0.15s;}
+a.src:hover{opacity:1;text-decoration-style:solid;}
+
+.section-label{display:inline-block;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g);background:var(--gl);padding:4px 12px;border-radius:20px;margin-bottom:14px;}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<div class="topbar">
+  <div class="logo"><svg viewBox="25 8 420 142" height="38" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#4caf6e"></stop><stop offset="100%" style="stop-color:#2e8b4f"></stop></linearGradient><linearGradient id="cg1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3a9e5c"></stop><stop offset="100%" style="stop-color:#2a7a44"></stop></linearGradient></defs><g transform="translate(44,46)"><rect x="0" y="18" width="96" height="72" rx="14" ry="14" fill="url(#cg1)"></rect><rect x="30" y="10" width="36" height="16" rx="8" ry="8" fill="#2a7a44"></rect><circle cx="48" cy="54" r="24" fill="#1f6338"></circle><circle cx="48" cy="54" r="18" fill="#26753f"></circle><circle cx="48" cy="54" r="12" fill="#0d3d20"></circle><circle cx="43" cy="49" r="4" fill="white" opacity="0.18"></circle><circle cx="41" cy="47" r="2" fill="white" opacity="0.28"></circle><circle cx="82" cy="28" r="5" fill="#a8e6bb" opacity="0.85"></circle><g stroke="#a8e6bb" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"><path d="M8 30 L8 24 L14 24"></path><path d="M88 30 L88 24 L82 24"></path><path d="M8 78 L8 84 L14 84"></path><path d="M88 78 L88 84 L82 84"></path></g><g transform="translate(72,-4) rotate(-20)"><path d="M0,0 C6,-18 24,-24 28,-14 C32,-4 18,12 0,0 Z" fill="url(#lg1)"></path><path d="M0,0 C10,-8 22,-12 28,-14" stroke="#a8e6bb" stroke-width="1.2" fill="none" opacity="0.7"></path></g></g><text x="172" y="108" font-family="Georgia,serif" font-size="52" font-weight="700" letter-spacing="-1" fill="#ffffff">Snap</text><text x="298" y="108" font-family="Georgia,serif" font-size="52" font-weight="400" letter-spacing="-1" fill="#C0DD97">Bite</text></svg></div>
+  <div class="top-nav">
+    <button class="nb active" onclick="goTo(0)">Idea</button>
+    <button class="nb" onclick="goTo(1)">Problem</button>
+    <button class="nb" onclick="goTo(2)">User</button>
+    <button class="nb" onclick="goTo(3)">Solution</button>
+    <button class="nb" onclick="goTo(4)">User Journey</button>
+    <button class="nb" onclick="goTo(5)">Budget</button>
+    <button class="nb" onclick="goTo(6)">Advert</button>
+  </div>
+  <div class="slide-ctr" id="slide-ctr">1 / 7</div>
+</div>
+
+<div class="slide-area" id="slide-area">
+
+  <!-- 0 IDEA -->
+  <div class="slide active" id="slide-0">
+    <div class="cover-block">
+      <div class="ctag">Brand Presentation · Friday 10th April</div>
+      <div style="margin-bottom:6px;"><svg viewBox="25 8 420 142" height="86" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#4caf6e"></stop><stop offset="100%" style="stop-color:#2e8b4f"></stop></linearGradient><linearGradient id="cg2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3a9e5c"></stop><stop offset="100%" style="stop-color:#2a7a44"></stop></linearGradient></defs><g transform="translate(44,46)"><rect x="0" y="18" width="96" height="72" rx="14" ry="14" fill="url(#cg2)"></rect><rect x="30" y="10" width="36" height="16" rx="8" ry="8" fill="#2a7a44"></rect><circle cx="48" cy="54" r="24" fill="#1f6338"></circle><circle cx="48" cy="54" r="18" fill="#26753f"></circle><circle cx="48" cy="54" r="12" fill="#0d3d20"></circle><circle cx="43" cy="49" r="4" fill="white" opacity="0.18"></circle><circle cx="41" cy="47" r="2" fill="white" opacity="0.28"></circle><circle cx="82" cy="28" r="5" fill="#a8e6bb" opacity="0.85"></circle><g stroke="#a8e6bb" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.5"><path d="M8 30 L8 24 L14 24"></path><path d="M88 30 L88 24 L82 24"></path><path d="M8 78 L8 84 L14 84"></path><path d="M88 78 L88 84 L82 84"></path></g><g transform="translate(72,-4) rotate(-20)"><path d="M0,0 C6,-18 24,-24 28,-14 C32,-4 18,12 0,0 Z" fill="url(#lg2)"></path><path d="M0,0 C10,-8 22,-12 28,-14" stroke="#a8e6bb" stroke-width="1.2" fill="none" opacity="0.7"></path></g></g><text x="172" y="108" font-family="Georgia,serif" font-size="52" font-weight="700" letter-spacing="-1" fill="#ffffff">Snap</text><text x="298" y="108" font-family="Georgia,serif" font-size="52" font-weight="400" letter-spacing="-1" fill="#C0DD97">Bite</text></svg></div>
+      <p style="font-size:16px;letter-spacing:2.5px;text-transform:uppercase;opacity:0.6;margin-bottom:16px;">Stop wasting food. Start eating smarter.</p>
+      <p class="cover-sub">The all-in-one food app for the sustainability generation — AI-powered recipes, macro tracking, and green grocery delivery.</p>
+      <div class="cstats">
+        <div><div class="cs-val">£100k</div><div class="cs-lbl">Launch budget</div></div>
+        <div><div class="cs-val">£17bn</div><div class="cs-lbl">UK food waste / yr (<a class="src" href="https://www.wrap.ngo/resources/report/household-food-and-drink-waste-uk-2022" target="_blank">WRAP, 2025</a>)</div></div>
+        <div><div class="cs-val">3-in-1</div><div class="cs-lbl">Apps replaced</div></div>
+        <div><div class="cs-val">16–25</div><div class="cs-lbl">Target audience</div></div>
+      </div>
+    </div>
+    <div class="strip s-green"><p>Stop wasting food. Start eating smarter.</p><small>AI-powered recipes · Macro tracking · Sustainable grocery delivery · All in one place</small></div>
+
+    <div class="slide-title" style="margin-top:10px;">Why does the market need this now?</div>
+
+    <div class="card"><div class="card-head"><div class="icon-circle ig" style="font-size:15px;font-weight:800;color:#3B6D11;">1</div><h3>Gen Z has changed what food means</h3></div><p class="card-text">73% of Gen Z say their generation is more conscious about the environmental impact of the food they consume (<a class="src" href="https://www.mckinsey.com/industries/consumer-packaged-goods/our-insights/true-gen-generation-z-and-its-implications-for-companies" target="_blank">McKinsey</a>). They do not just want an app — they want an app they believe in. No existing food app speaks their values.</p></div>
+    <div class="card"><div class="card-head"><div class="icon-circle ia" style="font-size:15px;font-weight:800;color:#BA7517;">2</div><h3>AI image recognition just became consumer-ready</h3></div><p class="card-text">Two
+ years ago, snapping a photo of leftovers and getting an accurate recipe
+ back would have been unreliable. Today, AI vision models are accurate 
+enough to make this experience genuinely magical. We are entering the 
+market at exactly the right technical moment.</p></div>
+    <div class="card"><div class="card-head"><div class="icon-circle it" style="font-size:15px;font-weight:800;color:#0F6E56;">3</div><h3>The cost-of-living crisis made food waste personal</h3></div><p class="card-text">When
+ money is tight, throwing food away is not just environmentally bad — it
+ is financially painful. An app that helps young people waste nothing 
+and spend less is no longer a nice-to-have. It is essential.</p></div>
+    <div class="g4">
+      <div class="metric-tile"><div class="metric-val">30M+</div><div class="metric-lbl">UK adults using food apps (<a class="src" href="https://www.statista.com/forecasts/1405516/users-online-food-delivery-uk" target="_blank">Statista, 2025</a>)</div></div>
+      <div class="metric-tile"><div class="metric-val">£17bn</div><div class="metric-lbl">UK edible food waste / yr (<a class="src" href="https://www.wrap.ngo/resources/report/household-food-and-drink-waste-uk-2022" target="_blank">WRAP, 2025</a>)</div></div>
+      <div class="metric-tile"><div class="metric-val">14.3%</div><div class="metric-lbl">UK nutrition app CAGR 2025–30 (<a class="src" href="https://www.grandviewresearch.com/horizon/outlook/diet-and-nutrition-apps-market/uk" target="_blank">Grand View Research</a>)</div></div>
+      <div class="metric-tile"><div class="metric-val">10.9%</div><div class="metric-lbl">UK fastest-growing in Europe (<a class="src" href="https://www.databridgemarketresearch.com/reports/europe-diet-and-nutrition-apps-market" target="_blank">Data Bridge, 2025</a>)</div></div>
+    </div>
+    <div class="hbox" style="text-align:center;margin-top:22px;">
+      <div style="display:flex;justify-content:center;margin-bottom:4px;"><svg viewBox="2 8 476 164" height="48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lgF" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#4caf6e"></stop><stop offset="100%" style="stop-color:#2e8b4f"></stop></linearGradient><linearGradient id="cgF" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3a9e5c"></stop><stop offset="100%" style="stop-color:#2a7a44"></stop></linearGradient></defs><rect x="10" y="15" width="460" height="150" rx="28" ry="28" fill="#1a4d2e"></rect><g transform="translate(44,46)"><rect x="0" y="18" width="96" height="72" rx="14" ry="14" fill="url(#cgF)"></rect><rect x="30" y="10" width="36" height="16" rx="8" ry="8" fill="#2a7a44"></rect><circle cx="48" cy="54" r="24" fill="#1f6338"></circle><circle cx="48" cy="54" r="18" fill="#26753f"></circle><circle cx="48" cy="54" r="12" fill="#0d3d20"></circle><circle cx="43" cy="49" r="4" fill="white" opacity="0.18"></circle><circle cx="41" cy="47" r="2" fill="white" opacity="0.28"></circle><circle cx="82" cy="28" r="5" fill="#a8e6bb" opacity="0.85"></circle><g stroke="#a8e6bb" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"><path d="M8 30 L8 24 L14 24"></path><path d="M88 30 L88 24 L82 24"></path><path d="M8 78 L8 84 L14 84"></path><path d="M88 78 L88 84 L82 84"></path></g><g transform="translate(72,-4) rotate(-20)"><path d="M0,0 C6,-18 24,-24 28,-14 C32,-4 18,12 0,0 Z" fill="url(#lgF)"></path><path d="M0,0 C10,-8 22,-12 28,-14" stroke="#a8e6bb" stroke-width="1.2" fill="none" opacity="0.7"></path></g></g><text x="172" y="108" font-family="Georgia,serif" font-size="52" font-weight="700" letter-spacing="-1" fill="#ffffff">Snap</text><text x="298" y="108" font-family="Georgia,serif" font-size="52" font-weight="400" letter-spacing="-1" fill="#4caf6e">Bite</text></svg></div>
+      <p style="font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--g);opacity:0.7;margin-bottom:10px;">Stop wasting food. Start eating smarter.</p>
+      <p>Stop wasting food. Start eating smarter.<br>Join us in making sustainability the default — not the exception.</p>
+    </div>
+  </div>
+
+  <!-- 1 USER -->
+  <div class="slide" id="slide-2">
+    <div class="slide-title">Our user</div>
+    <div class="slide-sub">Who we are building for — and why we understand them better than anyone</div>
+
+    <div class="g2">
+      <div class="card"><div class="card-head"><div class="icon-circle ig">🎓</div><h3>Primary: Students &amp; young renters (16–25)</h3></div><p class="card-text">Living
+ on tight budgets, cooking for one, juggling studies and part-time work.
+ They buy ingredients for a single recipe and throw away the rest. They 
+want to eat well but do not know where to start without spending more.</p></div>
+      <div class="card"><div class="card-head"><div class="icon-circle it">🏠</div><h3>Secondary: Young professionals (25–35)</h3></div><p class="card-text">Health-
+conscious, values-driven, time-poor. Already using 3+ apps for recipes, 
+calories, and shopping. They will pay for a product that brings it all 
+together in one place — especially if it aligns with their 
+sustainability values.</p></div>
+    </div>
+
+    <div class="strip s-teal"><p>We are the users. This team is aged 
+16–19. We have experienced the problem first-hand — separate apps, food 
+going off, spending too much on takeaways because we didn't know what to
+ cook. No one understands this market better.</p></div>
+
+    <div class="g3">
+      <div class="metric-tile"><div class="metric-val">73%</div><div class="metric-lbl">Gen Z conscious of food's environmental impact (<a class="src" href="https://www.mckinsey.com/industries/consumer-packaged-goods/our-insights/true-gen-generation-z-and-its-implications-for-companies" target="_blank">McKinsey</a>)</div></div>
+      <div class="metric-tile"><div class="metric-val">63%</div><div class="metric-lbl">UK Gen Z willing to pay more for ethical products (<a class="src" href="https://tink.com/press/peak-season-gen-z-millennial-2025/" target="_blank">Tink/Censuswide, 2025</a>)</div></div>
+      <div class="metric-tile"><div class="metric-val">29M+</div><div class="metric-lbl">Verified students on UNiDAYS globally (<a class="src" href="https://corporate.myunidays.com/" target="_blank">UNiDAYS, 2025</a>)</div></div>
+    </div>
+
+    <div class="card"><div class="card-head"><div class="icon-circle ia">📱</div><h3>How we reach them</h3></div><p class="card-text">TikTok
+ campaigns. Freshers week pop-ups at universities. Unidays and Student 
+Beans verified discounts. Influencer partnerships. Our users live on 
+social platforms — so that is where we launch, not through traditional 
+advertising.</p></div>
+
+    <div class="hbox"><h4>Student discount — our primary growth engine</h4><p>Pro
+ drops to £2.99/month for verified students — cheaper than a coffee. 
+This is the biggest acquisition channel at launch and the reason we will
+ grow faster than any competitor who ignores the student market.</p></div>
+    <div class="hbox" style="text-align:center;margin-top:22px;">
+      <div style="display:flex;justify-content:center;margin-bottom:4px;"><svg viewBox="2 8 476 164" height="48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lgF" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#4caf6e"></stop><stop offset="100%" style="stop-color:#2e8b4f"></stop></linearGradient><linearGradient id="cgF" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3a9e5c"></stop><stop offset="100%" style="stop-color:#2a7a44"></stop></linearGradient></defs><rect x="10" y="15" width="460" height="150" rx="28" ry="28" fill="#1a4d2e"></rect><g transform="translate(44,46)"><rect x="0" y="18" width="96" height="72" rx="14" ry="14" fill="url(#cgF)"></rect><rect x="30" y="10" width="36" height="16" rx="8" ry="8" fill="#2a7a44"></rect><circle cx="48" cy="54" r="24" fill="#1f6338"></circle><circle cx="48" cy="54" r="18" fill="#26753f"></circle><circle cx="48" cy="54" r="12" fill="#0d3d20"></circle><circle cx="43" cy="49" r="4" fill="white" opacity="0.18"></circle><circle cx="41" cy="47" r="2" fill="white" opacity="0.28"></circle><circle cx="82" cy="28" r="5" fill="#a8e6bb" opacity="0.85"></circle><g stroke="#a8e6bb" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"><path d="M8 30 L8 24 L14 24"></path><path d="M88 30 L88 24 L82 24"></path><path d="M8 78 L8 84 L14 84"></path><path d="M88 78 L88 84 L82 84"></path></g><g transform="translate(72,-4) rotate(-20)"><path d="M0,0 C6,-18 24,-24 28,-14 C32,-4 18,12 0,0 Z" fill="url(#lgF)"></path><path d="M0,0 C10,-8 22,-12 28,-14" stroke="#a8e6bb" stroke-width="1.2" fill="none" opacity="0.7"></path></g></g><text x="172" y="108" font-family="Georgia,serif" font-size="52" font-weight="700" letter-spacing="-1" fill="#ffffff">Snap</text><text x="298" y="108" font-family="Georgia,serif" font-size="52" font-weight="400" letter-spacing="-1" fill="#4caf6e">Bite</text></svg></div>
+      <p style="font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--g);opacity:0.7;margin-bottom:10px;">Stop wasting food. Start eating smarter.</p>
+      <p>Stop wasting food. Start eating smarter.<br>Join us in making sustainability the default — not the exception.</p>
+    </div>
+  </div>
+
+  <!-- 2 PROBLEM -->
+  <div class="slide" id="slide-1">
+    <div class="slide-title">The Problem</div>
+    <div class="slide-sub">Young people face four connected problems — and no single app solves any of them</div>
+
+    <div class="g2">
+      <div class="card">
+        <div class="card-head"><div class="icon-circle ig">🗑️</div><h3>Food waste</h3></div>
+        <div style="font-family:var(--fh);font-size:38px;font-weight:800;color:var(--g);margin-bottom:6px;">£1,000</div>
+        <p class="card-text">Thrown away per UK family every year. 
+Students and young renters waste proportionally more — buying 
+ingredients for one recipe and leaving the rest to go off. UK households
+ waste 4.4 million tonnes of edible food annually.</p>
+        <div style="font-size:13px;color:#aaa;margin-top:8px;"><a class="src" href="https://www.wrap.ngo/resources/report/household-food-and-drink-waste-uk-2022" target="_blank">WRAP, 2025</a></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><div class="icon-circle ig">📱</div><h3>App overload</h3></div>
+        <div style="font-family:var(--fh);font-size:38px;font-weight:800;color:var(--g);margin-bottom:6px;">3+ apps</div>
+        <p class="card-text">One for recipes. One for calories. One for 
+shopping. Fragmented, expensive, and none of them talk to each other. 
+Young people are forced to piece together their own broken system.</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><div class="icon-circle ig">💸</div><h3>Wasted money on apps that don't deliver</h3></div>
+        <div style="font-family:var(--fh);font-size:38px;font-weight:800;color:var(--g);margin-bottom:6px;">£120 / yr</div>
+        <p class="card-text">Students are paying £49.99/yr for 
+MyFitnessPal Premium, £30+/yr on recipe and meal planning apps, and 
+another £30+/yr on grocery list tools — totalling over £120 annually for
+ separate subscriptions that still don't talk to each other. That's 
+money spent on a broken, disconnected experience that SnapBite replaces 
+for £2.99/month.</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><div class="icon-circle ig">🌍</div><h3>Sustainability barrier</h3></div>
+        <div style="font-family:var(--fh);font-size:38px;font-weight:800;color:var(--g);margin-bottom:6px;">40%</div>
+        <p class="card-text">Of UK consumers say the main barrier to 
+sustainable living is not knowing where to start. The intent is there, 
+the barrier is access, and no app bridges that gap.</p>
+        <div style="font-size:13px;color:#aaa;margin-top:8px;"><a class="src" href="https://www.weforum.org/stories/2022/03/generation-z-sustainability-lifestyle-buying-decisions/" target="_blank">Deloitte UK</a></div>
+      </div>
+    </div>
+
+    <div class="hbox" style="border:2px solid var(--g);background:var(--gl);">
+      <h4 style="font-size:17px;">The gap in the market</h4>
+      <p>No app combines leftover meal generation + AI macro tracking + 
+sustainable grocery access + student discounts in one place. That is 
+exactly where SnapBite sits.</p>
+    </div>
+    <div class="hbox" style="text-align:center;margin-top:22px;">
+      <div style="display:flex;justify-content:center;margin-bottom:4px;"><svg viewBox="2 8 476 164" height="48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lgF" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#4caf6e"></stop><stop offset="100%" style="stop-color:#2e8b4f"></stop></linearGradient><linearGradient id="cgF" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3a9e5c"></stop><stop offset="100%" style="stop-color:#2a7a44"></stop></linearGradient></defs><rect x="10" y="15" width="460" height="150" rx="28" ry="28" fill="#1a4d2e"></rect><g transform="translate(44,46)"><rect x="0" y="18" width="96" height="72" rx="14" ry="14" fill="url(#cgF)"></rect><rect x="30" y="10" width="36" height="16" rx="8" ry="8" fill="#2a7a44"></rect><circle cx="48" cy="54" r="24" fill="#1f6338"></circle><circle cx="48" cy="54" r="18" fill="#26753f"></circle><circle cx="48" cy="54" r="12" fill="#0d3d20"></circle><circle cx="43" cy="49" r="4" fill="white" opacity="0.18"></circle><circle cx="41" cy="47" r="2" fill="white" opacity="0.28"></circle><circle cx="82" cy="28" r="5" fill="#a8e6bb" opacity="0.85"></circle><g stroke="#a8e6bb" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"><path d="M8 30 L8 24 L14 24"></path><path d="M88 30 L88 24 L82 24"></path><path d="M8 78 L8 84 L14 84"></path><path d="M88 78 L88 84 L82 84"></path></g><g transform="translate(72,-4) rotate(-20)"><path d="M0,0 C6,-18 24,-24 28,-14 C32,-4 18,12 0,0 Z" fill="url(#lgF)"></path><path d="M0,0 C10,-8 22,-12 28,-14" stroke="#a8e6bb" stroke-width="1.2" fill="none" opacity="0.7"></path></g></g><text x="172" y="108" font-family="Georgia,serif" font-size="52" font-weight="700" letter-spacing="-1" fill="#ffffff">Snap</text><text x="298" y="108" font-family="Georgia,serif" font-size="52" font-weight="400" letter-spacing="-1" fill="#4caf6e">Bite</text></svg></div>
+      <p style="font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--g);opacity:0.7;margin-bottom:10px;">Stop wasting food. Start eating smarter.</p>
+      <p>Stop wasting food. Start eating smarter.<br>Join us in making sustainability the default — not the exception.</p>
+    </div>
+  </div>
+
+  <!-- 3 SOLUTION -->
+  <div class="slide" id="slide-3">
+    <div class="slide-title">Our solution</div>
+    <div class="slide-sub">One app that replaces three — built around sustainability, nutrition, and real life</div>
+    <div class="strip s-teal"><p>We are not another recipe app. We are 
+not another calorie counter. We are the first app that connects what is 
+in your fridge to what goes on your plate — and tracks the nutrition, 
+the waste saved, and the planet impact all at once.</p></div>
+    <div class="g2">
+      <div class="card"><div class="card-head"><div class="icon-circle ig">📸</div><h3>Snap your fridge</h3></div><p class="card-text">Photograph
+ leftover ingredients. AI generates tailored recipes in under 10 seconds
+ — reducing waste and saving a supermarket trip.</p></div>
+      <div class="card"><div class="card-head"><div class="icon-circle it">🥗</div><h3>Snap your plate</h3></div><p class="card-text">Photograph any meal and get instant calorie and macro data. Replaces MyFitnessPal entirely — with zero manual logging.</p></div>
+      <div class="card"><div class="card-head"><div class="icon-circle ia">🛍️</div><h3>Too Good To Go</h3></div><p class="card-text">Browse and reserve discounted mystery food bags from local restaurants — inside our app, not theirs.</p></div>
+      <div class="card"><div class="card-head"><div class="icon-circle ig">🌿</div><h3>Ocado EV delivery</h3></div><p class="card-text">Order missing ingredients via Ocado electric vehicle delivery. Zero emissions. Two taps. Done.</p></div>
+    </div>
+    <div class="strip s-green"><p>The result? Less waste, better nutrition, lower cost, and a smaller carbon footprint — automatically.</p><small>Every feature reinforces the same mission: helping young people eat well, spend less, and waste nothing.</small></div>
+
+    <div class="slide-title" style="margin-top:22px;">Why should you believe in us?</div>
+    <div class="slide-sub">Five reasons this idea is bigger than just an app</div>
+    <div class="why-card"><div class="why-num">01</div><div><div class="why-title">We are the users</div><div class="why-text">This
+ team is aged 16–19. We are the exact people this app is built for. We 
+have experienced the problem first-hand — no one understands this market
+ better than us.</div></div></div>
+    <div class="why-card"><div class="why-num">02</div><div><div class="why-title">The problem is getting worse, not better</div><div class="why-text">UK households waste 4.4 million tonnes of edible food each year, costing £17 billion (<a class="src" href="https://www.wrap.ngo/resources/report/household-food-and-drink-waste-uk-2022" target="_blank">WRAP, 2025</a>). Nutrition app costs are rising. The cost-of-living crisis is not going away. Every trend points toward a bigger market.</div></div></div>
+    <div class="why-card"><div class="why-num">03</div><div><div class="why-title">Our partnerships are real competitive barriers</div><div class="why-text">Too
+ Good To Go, Ocado, Unidays, and Student Beans are not random names on a
+ slide. Each adds a layer that a competitor would take years to 
+replicate. The network becomes the moat.</div></div></div>
+    <div class="why-card"><div class="why-num">04</div><div><div class="why-title">Sustainability is becoming a legal requirement</div><div class="why-text">UK
+ legislation increasingly requires businesses to report food waste. 
+Partnering with an app that actively reduces waste gives supermarkets a 
+measurable, reportable sustainability win.</div></div></div>
+    <div class="why-card"><div class="why-num">05</div><div><div class="why-title">The AI makes it better every day</div><div class="why-text">Unlike
+ a static recipe book, SnapBite's AI improves the more it is used. More 
+scans = better accuracy. More check-ins = better portions. The product 
+gets smarter with every user, every day.</div></div></div>
+
+    <!-- PARTNERSHIPS -->
+    <div class="slide-title" style="margin-top:22px;">Partnerships</div>
+    <div class="slide-sub">Five partners. One shared mission: less waste, better food, greener planet.</div>
+    <div class="partner-row"><div class="partner-logo" style="background:#00a650;color:#fff;">T2G</div><div><div class="partner-name">Too Good To Go</div><div class="partner-desc">In-app access to discounted mystery food bags from local restaurants and supermarkets. Revenue share on every redemption.</div></div></div>
+    <div class="partner-row"><div class="partner-logo" style="background:#6B2D8B;color:#fff;">OC</div><div><div class="partner-name">Ocado — included in Pro and Family tiers</div><div class="partner-desc">EV-only grocery delivery integrated directly into the app. Ocado's premium service becomes a reward for upgrading.</div></div></div>
+    <div class="partner-row"><div class="partner-logo" style="background:#0073E6;color:#fff;">UD</div><div><div class="partner-name">Unidays</div><div class="partner-desc">Student verification and 40% discount on Pro tier. Immediate access to 29M+ verified students globally (<a class="src" href="https://corporate.myunidays.com/" target="_blank">UNiDAYS, 2025</a>). Our largest single acquisition channel at launch.</div></div></div>
+    <div class="partner-row"><div class="partner-logo" style="background:#E63946;color:#fff;">SB</div><div><div class="partner-name">Student Beans</div><div class="partner-desc">Secondary student discount channel. Co-marketing during freshers week. Email campaigns to 8M UK students.</div></div></div>
+    <div class="partner-row"><div class="partner-logo" style="background:#FF6B00;color:#fff;">SM</div><div><div class="partner-name">Supermarket meal kit packages</div><div class="partner-desc">Pre-portioned ingredients matched to in-app recipes. In discussion with Tesco, Sainsbury's, and M&amp;S.</div></div></div>
+    <div class="hbox" style="text-align:center;margin-top:22px;">
+      <div style="display:flex;justify-content:center;margin-bottom:4px;"><svg viewBox="2 8 476 164" height="48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lgF" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#4caf6e"></stop><stop offset="100%" style="stop-color:#2e8b4f"></stop></linearGradient><linearGradient id="cgF" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3a9e5c"></stop><stop offset="100%" style="stop-color:#2a7a44"></stop></linearGradient></defs><rect x="10" y="15" width="460" height="150" rx="28" ry="28" fill="#1a4d2e"></rect><g transform="translate(44,46)"><rect x="0" y="18" width="96" height="72" rx="14" ry="14" fill="url(#cgF)"></rect><rect x="30" y="10" width="36" height="16" rx="8" ry="8" fill="#2a7a44"></rect><circle cx="48" cy="54" r="24" fill="#1f6338"></circle><circle cx="48" cy="54" r="18" fill="#26753f"></circle><circle cx="48" cy="54" r="12" fill="#0d3d20"></circle><circle cx="43" cy="49" r="4" fill="white" opacity="0.18"></circle><circle cx="41" cy="47" r="2" fill="white" opacity="0.28"></circle><circle cx="82" cy="28" r="5" fill="#a8e6bb" opacity="0.85"></circle><g stroke="#a8e6bb" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"><path d="M8 30 L8 24 L14 24"></path><path d="M88 30 L88 24 L82 24"></path><path d="M8 78 L8 84 L14 84"></path><path d="M88 78 L88 84 L82 84"></path></g><g transform="translate(72,-4) rotate(-20)"><path d="M0,0 C6,-18 24,-24 28,-14 C32,-4 18,12 0,0 Z" fill="url(#lgF)"></path><path d="M0,0 C10,-8 22,-12 28,-14" stroke="#a8e6bb" stroke-width="1.2" fill="none" opacity="0.7"></path></g></g><text x="172" y="108" font-family="Georgia,serif" font-size="52" font-weight="700" letter-spacing="-1" fill="#ffffff">Snap</text><text x="298" y="108" font-family="Georgia,serif" font-size="52" font-weight="400" letter-spacing="-1" fill="#4caf6e">Bite</text></svg></div>
+      <p style="font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--g);opacity:0.7;margin-bottom:10px;">Stop wasting food. Start eating smarter.</p>
+      <p>Stop wasting food. Start eating smarter.<br>Join us in making sustainability the default — not the exception.</p>
+    </div>
+  </div>
+
+  <!-- 4 USER JOURNEY -->
+  <div class="slide" id="slide-4">
+    <div class="slide-title">User journey: snap your meal</div>
+    <div class="slide-sub">"Imagine you just made pasta. You photograph it. In 10 seconds you know exactly what you ate."</div>
+    <div class="phones-wrap">
+      <div>
+        <div class="phone-outer"><div class="phone-screen">
+          <div class="phone-status"><span>9:41</span><span>●●●</span></div>
+          <div class="phone-header"><div class="phone-logo"><div class="phone-logo-dot"></div></div><div class="phone-app-name">SnapBite</div></div>
+          <div class="phone-body">
+            <div class="phone-label">Step 1 — take a photo</div>
+            <div class="phone-img" style="font-size:30px;">🍝<div class="scan-ring"></div></div>
+            <div style="font-size:9px;color:#888;text-align:center;">Tap camera. Point at your meal.</div>
+          </div>
+        </div></div>
+        <div class="phone-cap">Photograph your meal</div><div class="phone-cap2">One tap on the camera icon</div>
+      </div>
+      <div>
+        <div class="phone-outer"><div class="phone-screen">
+          <div class="phone-status"><span>9:41</span><span>●●●</span></div>
+          <div class="phone-header"><div class="phone-logo"><div class="phone-logo-dot"></div></div><div class="phone-app-name">SnapBite</div></div>
+          <div class="phone-body">
+            <div style="background:#3B6D11;color:#fff;font-size:9px;padding:3px 8px;border-radius:10px;display:inline-block;margin-bottom:7px;">AI scanning...</div>
+            <div class="phone-img" style="font-size:30px;">🍝<div class="scan-line"></div></div>
+            <div class="phone-label">Identifying dish</div>
+            <div style="font-size:9.5px;color:#555;text-align:center;margin-bottom:5px;">Spaghetti Bolognese · Detected</div>
+            <div style="height:5px;background:#d8e8c0;border-radius:4px;overflow:hidden;"><div style="width:78%;height:100%;background:#3B6D11;border-radius:4px;"></div></div>
+          </div>
+        </div></div>
+        <div class="phone-cap">AI identifies your dish</div><div class="phone-cap2">Under 10 seconds</div>
+      </div>
+      <div>
+        <div class="phone-outer"><div class="phone-screen">
+          <div class="phone-status"><span>9:41</span><span>●●●</span></div>
+          <div class="phone-header"><div class="phone-logo"><div class="phone-logo-dot"></div></div><div class="phone-app-name">SnapBite</div></div>
+          <div class="phone-body">
+            <div class="phone-label">Spaghetti Bolognese</div>
+            <div class="macro-grid">
+              <div class="macro-box"><div class="macro-val">620</div><div class="macro-lbl">kcal</div></div>
+              <div class="macro-box"><div class="macro-val">34g</div><div class="macro-lbl">protein</div></div>
+              <div class="macro-box"><div class="macro-val">72g</div><div class="macro-lbl">carbs</div></div>
+              <div class="macro-box"><div class="macro-val">18g</div><div class="macro-lbl">fat</div></div>
+            </div>
+            <div style="height:5px;background:#d8e8c0;border-radius:4px;overflow:hidden;margin-bottom:5px;"><div style="width:62%;height:100%;background:#3B6D11;border-radius:4px;"></div></div>
+            <div style="font-size:8px;color:#888;margin-bottom:7px;">Daily goal: 1,800 kcal · 62% used</div>
+            <div class="phone-label">Today's log</div>
+            <div class="r-pill">Breakfast — Oats <span class="r-tag">340 kcal</span></div>
+            <div class="r-pill">Lunch — Bolognese <span class="r-tag">620 kcal</span></div>
+          </div>
+        </div></div>
+        <div class="phone-cap">Instant macros logged</div><div class="phone-cap2">No typing, no searching</div>
+      </div>
+    </div>
+    <div class="demo-steps">
+      <div class="demo-step"><div class="step-num">01</div><div class="step-label">Open the app</div><div class="step-sub">Tap camera icon</div></div>
+      <div class="demo-step"><div class="step-num">02</div><div class="step-label">Photograph your meal</div><div class="step-sub">One tap</div></div>
+      <div class="demo-step"><div class="step-num">03</div><div class="step-label">AI identifies dish</div><div class="step-sub">Under 10 seconds</div></div>
+      <div class="demo-step"><div class="step-num">04</div><div class="step-label">Macros logged</div><div class="step-sub">Instantly saved</div></div>
+    </div>
+
+    <!-- FRIDGE SCAN -->
+    <div class="slide-title" style="margin-top:30px;">User journey: scan your fridge</div>
+    <div class="slide-sub">Open the fridge. Snap what's left. Get three recipes in seconds.</div>
+    <div class="phones-wrap">
+      <div>
+        <div class="phone-outer"><div class="phone-screen">
+          <div class="phone-status"><span>9:42</span><span>●●●</span></div>
+          <div class="phone-header"><div class="phone-logo"><div class="phone-logo-dot"></div></div><div class="phone-app-name">SnapBite</div></div>
+          <div class="phone-body">
+            <div class="phone-label">Step 1 — scan your fridge</div>
+            <div class="phone-img" style="font-size:20px;letter-spacing:-2px;">🧀🥕🥚<div class="scan-ring"></div></div>
+            <div style="font-size:9px;color:#888;text-align:center;">Point camera at open fridge</div>
+          </div>
+        </div></div>
+        <div class="phone-cap">Open fridge, take photo</div><div class="phone-cap2">Leftovers, odds and ends</div>
+      </div>
+      <div>
+        <div class="phone-outer"><div class="phone-screen">
+          <div class="phone-status"><span>9:42</span><span>●●●</span></div>
+          <div class="phone-header"><div class="phone-logo"><div class="phone-logo-dot"></div></div><div class="phone-app-name">SnapBite</div></div>
+          <div class="phone-body">
+            <div class="phone-label">Ingredients found</div>
+            <div class="ing-grid">
+              <div class="ing-box"><span class="ing-icon">🧀</span><div class="ing-lbl">Cheddar</div></div>
+              <div class="ing-box"><span class="ing-icon">🥕</span><div class="ing-lbl">Carrots</div></div>
+              <div class="ing-box"><span class="ing-icon">🥚</span><div class="ing-lbl">Eggs</div></div>
+              <div class="ing-box"><span class="ing-icon">🧅</span><div class="ing-lbl">Onion</div></div>
+              <div class="ing-box"><span class="ing-icon">🌿</span><div class="ing-lbl">Herbs</div></div>
+              <div class="ing-box"><span class="ing-icon">🥛</span><div class="ing-lbl">Milk</div></div>
+            </div>
+            <div style="font-size:8.5px;color:#888;text-align:center;">Not right? Tap to edit</div>
+          </div>
+        </div></div>
+        <div class="phone-cap">AI lists every ingredient</div><div class="phone-cap2">Tap to add or remove</div>
+      </div>
+      <div>
+        <div class="phone-outer"><div class="phone-screen">
+          <div class="phone-status"><span>9:42</span><span>●●●</span></div>
+          <div class="phone-header"><div class="phone-logo"><div class="phone-logo-dot"></div></div><div class="phone-app-name">SnapBite</div></div>
+          <div class="phone-body">
+            <div class="phone-label">3 recipes ready</div>
+            <div class="r-pill">Cheesy veg frittata <span class="r-tag">25 min</span></div>
+            <div class="r-pill">Carrot &amp; cheddar soup <span class="r-tag">20 min</span></div>
+            <div class="r-pill">Egg fried rice bake <span class="r-tag">30 min</span></div>
+            <div class="phone-label" style="margin-top:8px;">Missing 1 ingredient?</div>
+            <div class="order-btn">Order rice via Ocado EV →</div>
+          </div>
+        </div></div>
+        <div class="phone-cap">3 recipes, zero waste</div><div class="phone-cap2">Order missing items instantly</div>
+      </div>
+    </div>
+    <div class="strip s-green"><p>Every leftover becomes an opportunity — not something that goes in the bin.</p></div>
+
+    <!-- ORDER MISSING -->
+    <div class="slide-title" style="margin-top:30px;">User journey: order missing ingredients</div>
+    <div class="slide-sub">SnapBite connects your fridge scan directly to Ocado EV delivery — in two taps.</div>
+    <div class="phones-wrap">
+      <div>
+        <div class="phone-outer"><div class="phone-screen">
+          <div class="phone-status"><span>9:43</span><span>●●●</span></div>
+          <div class="phone-header"><div class="phone-logo"><div class="phone-logo-dot"></div></div><div class="phone-app-name">SnapBite</div></div>
+          <div class="phone-body">
+            <div class="phone-label">5 of 6 ingredients found</div>
+            <div class="r-pill">Cheddar <span class="r-tag">✓ Have it</span></div>
+            <div class="r-pill">Carrots <span class="r-tag">✓ Have it</span></div>
+            <div class="r-pill">Eggs <span class="r-tag">✓ Have it</span></div>
+            <div class="r-pill">Onion <span class="r-tag">✓ Have it</span></div>
+            <div class="r-pill" style="border-color:#f09595;">Rice <span class="r-tag-red">Missing</span></div>
+            <div class="order-btn" style="margin-top:8px;">Add rice to Ocado basket →</div>
+          </div>
+        </div></div>
+        <div class="phone-cap">One missing ingredient</div><div class="phone-cap2">Spotted automatically</div>
+      </div>
+      <div>
+        <div class="phone-outer"><div class="phone-screen">
+          <div class="phone-status"><span>9:43</span><span>●●●</span></div>
+          <div class="phone-header"><div class="phone-logo"><div class="phone-logo-dot"></div></div><div class="phone-app-name">SnapBite × Ocado</div></div>
+          <div class="phone-body">
+            <div class="phone-label">Ocado basket</div>
+            <div class="r-pill">Tilda Basmati Rice 1kg <span class="r-tag">£2.50</span></div>
+            <div style="margin:7px 0;font-size:8.5px;color:#888;">Delivery: Today, 6pm–8pm</div>
+            <div style="display:flex;align-items:center;gap:4px;background:#EAF3DE;border-radius:8px;padding:5px 7px;font-size:8.5px;color:#3B6D11;margin-bottom:8px;">🚗 Electric vehicle delivery</div>
+            <div class="order-btn-purple">Confirm Ocado order — £2.50</div>
+            <div style="font-size:8px;color:#888;text-align:center;margin-top:4px;">Included in your Pro plan</div>
+          </div>
+        </div></div>
+        <div class="phone-cap">Ocado basket pre-filled</div><div class="phone-cap2">EV slot shown automatically</div>
+      </div>
+      <div>
+        <div class="phone-outer"><div class="phone-screen">
+          <div class="phone-status"><span>9:44</span><span>●●●</span></div>
+          <div class="phone-header"><div class="phone-logo"><div class="phone-logo-dot"></div></div><div class="phone-app-name">SnapBite</div></div>
+          <div class="phone-body">
+            <div style="background:#EAF3DE;border-radius:11px;padding:10px;text-align:center;margin-bottom:9px;">
+              <div style="font-size:18px;margin-bottom:2px;">✓</div>
+              <div style="font-size:10.5px;font-weight:600;color:#3B6D11;">Order confirmed!</div>
+              <div style="font-size:8px;color:#555;margin-top:2px;">Arrives today 6–8pm via EV</div>
+            </div>
+            <div class="phone-label">Tonight's cook</div>
+            <div class="r-pill">Egg fried rice bake <span class="r-tag">30 min</span></div>
+            <div class="phone-label" style="margin-top:8px;">This week's impact</div>
+            <div style="background:#fff;border-radius:9px;padding:7px;font-size:8.5px;color:#555;border:1px solid #d5e8c0;line-height:1.7;">
+              <div>🌱 0.4 kg food waste saved</div>
+              <div>🚗 EV delivery used: 1 time</div>
+              <div>💰 £3.20 saved vs supermarket</div>
+            </div>
+          </div>
+        </div></div>
+        <div class="phone-cap">Order confirmed</div><div class="phone-cap2">Waste saved, impact tracked</div>
+      </div>
+    </div>
+    <div class="strip s-teal"><p>Ocado EV delivery is built into the Pro
+ and Family plans — no extra charge. Both SnapBite and Ocado share a 
+commitment to reducing food waste and doing our bit for society.</p></div>
+
+    <!-- SMART PORTIONS -->
+    <div class="slide-title" style="margin-top:30px;">Smart portions — built for every body</div>
+    <div class="slide-sub">Everyone eats differently. SnapBite calculates your personal calorie goal and adjusts portions to match.</div>
+    <div class="strip s-amber"><p>How do we know the right portion size? We ask about you first.</p><small>On setup, SnapBite asks for your height, weight, age, and goal. Portion guidance then adapts in real time as you use the app.</small></div>
+    <div class="calc-wrap">
+      <div class="calc-lbl">Try it live — adjust the sliders to see your personal calorie goal</div>
+      <div class="sex-toggle">
+        <button class="sex-btn" id="sb-m" onclick="setSex('m')">Male</button>
+        <button class="sex-btn on" id="sb-f" onclick="setSex('f')">Female</button>
+      </div>
+      <div class="calc-row"><label>Age</label><input type="range" min="16" max="65" value="37" step="1" id="r-age" oninput="calc()"><span class="val" id="o-age">37</span></div>
+      <div class="calc-row"><label>Height (cm)</label><input type="range" min="150" max="200" value="200" step="1" id="r-ht" oninput="calc()"><span class="val" id="o-ht">200</span></div>
+      <div class="calc-row"><label>Weight (kg)</label><input type="range" min="45" max="120" value="89" step="1" id="r-wt" oninput="calc()"><span class="val" id="o-wt">89</span></div>
+      <div class="calc-results">
+        <div class="result-box"><div class="result-val" id="r-cal">2512</div><div class="result-lbl">Daily calories</div></div>
+        <div class="result-box"><div class="result-val" id="r-pro">178</div><div class="result-lbl">Protein (g)</div></div>
+        <div class="result-box"><div class="result-val" id="r-pasta">399</div><div class="result-lbl">Pasta portion (g)</div></div>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="card"><div class="card-head"><div class="icon-circle ig">📊</div><h3>Adapts as you eat</h3></div><p class="card-text">Ate a big lunch? Dinner suggestions get lighter. Had a workout? The app adjusts for the extra calories burned — automatically.</p></div>
+      <div class="card"><div class="card-head"><div class="icon-circle ia">💬</div><h3>Weekly check-in survey</h3></div><p class="card-text">Every
+ Sunday, SnapBite asks: "Were your portions satisfying this week?" Your 
+answer trains the AI to fine-tune portions over time — getting more 
+accurate the longer you use it.</p></div>
+    </div>
+    <div class="hbox"><h4>No one-size-fits-all</h4><p>A 6ft rugby player
+ and a 5ft2 student need very different portions of the same pasta dish.
+ SnapBite knows that — and serves the right amount for you, 
+automatically.</p></div>
+    <div class="hbox" style="text-align:center;margin-top:22px;">
+      <div style="display:flex;justify-content:center;margin-bottom:4px;"><svg viewBox="2 8 476 164" height="48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lgF" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#4caf6e"></stop><stop offset="100%" style="stop-color:#2e8b4f"></stop></linearGradient><linearGradient id="cgF" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3a9e5c"></stop><stop offset="100%" style="stop-color:#2a7a44"></stop></linearGradient></defs><rect x="10" y="15" width="460" height="150" rx="28" ry="28" fill="#1a4d2e"></rect><g transform="translate(44,46)"><rect x="0" y="18" width="96" height="72" rx="14" ry="14" fill="url(#cgF)"></rect><rect x="30" y="10" width="36" height="16" rx="8" ry="8" fill="#2a7a44"></rect><circle cx="48" cy="54" r="24" fill="#1f6338"></circle><circle cx="48" cy="54" r="18" fill="#26753f"></circle><circle cx="48" cy="54" r="12" fill="#0d3d20"></circle><circle cx="43" cy="49" r="4" fill="white" opacity="0.18"></circle><circle cx="41" cy="47" r="2" fill="white" opacity="0.28"></circle><circle cx="82" cy="28" r="5" fill="#a8e6bb" opacity="0.85"></circle><g stroke="#a8e6bb" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"><path d="M8 30 L8 24 L14 24"></path><path d="M88 30 L88 24 L82 24"></path><path d="M8 78 L8 84 L14 84"></path><path d="M88 78 L88 84 L82 84"></path></g><g transform="translate(72,-4) rotate(-20)"><path d="M0,0 C6,-18 24,-24 28,-14 C32,-4 18,12 0,0 Z" fill="url(#lgF)"></path><path d="M0,0 C10,-8 22,-12 28,-14" stroke="#a8e6bb" stroke-width="1.2" fill="none" opacity="0.7"></path></g></g><text x="172" y="108" font-family="Georgia,serif" font-size="52" font-weight="700" letter-spacing="-1" fill="#ffffff">Snap</text><text x="298" y="108" font-family="Georgia,serif" font-size="52" font-weight="400" letter-spacing="-1" fill="#4caf6e">Bite</text></svg></div>
+      <p style="font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--g);opacity:0.7;margin-bottom:10px;">Stop wasting food. Start eating smarter.</p>
+      <p>Stop wasting food. Start eating smarter.<br>Join us in making sustainability the default — not the exception.</p>
+    </div>
+  </div>
+
+  <!-- 5 BUDGET -->
+  <div class="slide" id="slide-5">
+    <div class="ask-cover">
+      <div class="ctag">The Ask</div>
+      <h1>£100k to change<br><span>how a generation eats</span></h1>
+      <p>We are not just building an app. We are building a movement — made by young people, for young people.</p>
+      <div class="cstats">
+        <div><div class="cs-val" style="color:#C0DD97;">£4.50</div><div class="cs-lbl">Blended ARPU / month</div></div>
+        <div><div class="cs-val" style="color:#C0DD97;">1,845</div><div class="cs-lbl">Paying users = break-even</div></div>
+        <div><div class="cs-val" style="color:#C0DD97;">8mo</div><div class="cs-lbl">Target break-even</div></div>
+      </div>
+    </div>
+
+    <!-- UPFRONT COSTS -->
+    <div class="slide-title">Upfront costs — how we spend the £100k</div>
+    <div class="slide-sub">One-time investment to build, launch, and reach market</div>
+    <div class="card">
+      <div class="card-head"><div class="icon-circle ig" style="font-size:14px;font-weight:800;color:#3B6D11;">£</div><h3>Launch budget allocation</h3></div>
+      <div class="budget-item"><div class="budget-row"><span class="budget-label">App development (iOS + Android)</span><span class="budget-amount">£40,000</span></div><div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--g);"></div></div></div>
+      <div class="budget-item"><div class="budget-row"><span class="budget-label">AI model integration (vision + recipe APIs)</span><span class="budget-amount">£20,000</span></div><div class="bar-track"><div class="bar-fill" style="width:20%;background:var(--gm);"></div></div></div>
+      <div class="budget-item"><div class="budget-row"><span class="budget-label">Marketing: TikTok, influencers, freshers week</span><span class="budget-amount">£20,000</span></div><div class="bar-track"><div class="bar-fill" style="width:20%;background:var(--am);"></div></div></div>
+      <div class="budget-item"><div class="budget-row"><span class="budget-label">Partnership setup and legal</span><span class="budget-amount">£10,000</span></div><div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--tl);"></div></div></div>
+      <div class="budget-item" style="margin-bottom:0;"><div class="budget-row"><span class="budget-label">Operations and contingency</span><span class="budget-amount">£10,000</span></div><div class="bar-track"><div class="bar-fill" style="width:10%;background:#aaa;"></div></div></div>
+    </div>
+
+    <!-- ONGOING ANNUAL COSTS -->
+    <div class="slide-title" style="margin-top:22px;">Ongoing costs — Year 1 operating budget</div>
+    <div class="slide-sub">£100,000 annual budget to run, grow, and maintain SnapBite post-launch</div>
+    <div class="card">
+      <div class="card-head"><div class="icon-circle ig" style="font-size:14px;font-weight:800;color:#3B6D11;">↻</div><h3>Year 1 operating costs — £100,000</h3></div>
+      <div class="budget-item"><div class="budget-row"><span class="budget-label">Cloud hosting and AI API calls</span><span class="budget-amount">£25,000</span></div><div class="bar-track"><div class="bar-fill" style="width:25%;background:var(--g);"></div></div></div>
+      <div class="budget-item"><div class="budget-row"><span class="budget-label">Ongoing marketing and growth</span><span class="budget-amount">£25,000</span></div><div class="bar-track"><div class="bar-fill" style="width:25%;background:var(--gm);"></div></div></div>
+      <div class="budget-item"><div class="budget-row"><span class="budget-label">Contract dev maintenance and updates</span><span class="budget-amount">£25,000</span></div><div class="bar-track"><div class="bar-fill" style="width:25%;background:var(--g);opacity:0.7;"></div></div></div>
+      <div class="budget-item"><div class="budget-row"><span class="budget-label">Customer support and community</span><span class="budget-amount">£10,000</span></div><div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--gm);opacity:0.7;"></div></div></div>
+      <div class="budget-item"><div class="budget-row"><span class="budget-label">Analytics and third-party services</span><span class="budget-amount">£5,000</span></div><div class="bar-track"><div class="bar-fill" style="width:5%;background:var(--g);opacity:0.5;"></div></div></div>
+      <div class="budget-item" style="margin-bottom:0;"><div class="budget-row"><span class="budget-label">Contingency and reserves</span><span class="budget-amount">£10,000</span></div><div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--gm);opacity:0.5;"></div></div></div>
+    </div>
+    <div class="hbox"><h4>Lean by design</h4><p>We are a student-founded
+ team keeping costs low. No office. No full-time salaries in year one. 
+Contract developers, free-tier tools where possible, and marketing spend
+ that scales with revenue. At ~£8,300/month, we need just 1,845 paying 
+subscribers at £4.50 blended ARPU to break even — achievable within 
+eight months of launch.</p></div>
+    <div class="card">
+      <div class="card-head"><div class="icon-circle ig" style="font-size:14px;font-weight:800;color:#3B6D11;">£</div><h3>How we calculate blended ARPU of £4.50</h3></div>
+      <p class="card-text">Blended ARPU (average revenue per user) 
+reflects the weighted average across all paying tiers. We estimate 60% 
+of subscribers will be students at £2.99/month, 30% will be standard Pro
+ users at £4.99/month, and 10% will be Family plan users at £8.99/month.
+ That gives us: (0.6 × £2.99) + (0.3 × £4.99) + (0.1 × £8.99) = £1.79 + 
+£1.50 + £0.90 = <strong>£4.19</strong>, rounded up to £4.50 to account for annual plan uplift and reduced churn on longer commitments.</p>
+    </div>
+
+    <!-- REVENUE STREAMS -->
+    <div class="slide-title" style="margin-top:22px;">Revenue streams</div>
+    <div class="slide-sub">Three ways SnapBite generates income</div>
+    <div class="g2">
+      <div class="card"><div class="card-head"><div class="icon-circle ig">💳</div><h3>Stream 1: Subscriptions (primary)</h3></div><p class="card-text">Pro
+ at £4.99/month (£2.99 for students) and Family at £8.99/month. 
+Subscriptions are our core revenue — predictable, recurring, and growing
+ with every new user.</p></div>
+      <div class="card"><div class="card-head"><div class="icon-circle it">🤝</div><h3>Stream 2: Partner commissions</h3></div><p class="card-text">Revenue
+ share with Too Good To Go on every bag redeemed. Commission from Ocado 
+on every order placed through the app. Affiliate fees from supermarket 
+meal kits.</p></div>
+      <div class="card"><div class="card-head"><div class="icon-circle ia">🎟️</div><h3>Stream 3: Coupons and brands</h3></div><p class="card-text">Food
+ brands pay to feature in our weekly coupon drops. Because we know what 
+our users eat, we can offer highly targeted placements — worth more than
+ generic ads.</p></div>
+      <div class="card"><div class="card-head"><div class="icon-circle ig">📈</div><h3>Beyond break-even</h3></div><p class="card-text">At
+ 5,000 paying users (month 9–10), MRR hits £22,500 — more than double 
+operating costs. Partnership income and coupons add another 15–20% on 
+top. This is a business that scales.</p></div>
+    </div>
+
+    <!-- PRICING -->
+    <div class="slide-title" style="margin-top:22px;">Pricing model</div>
+    <div class="slide-sub">Free 14-day trial, no card required. Three tiers to suit every budget.</div>
+    <div class="tier-grid">
+      <div class="tier-card">
+        <div class="tier-badge" style="color:#888;">Starter</div>
+        <div class="tier-name">Basic</div>
+        <div class="tier-price">Free <span>forever</span></div>
+        <div class="tier-feat">5 AI recipes / month</div>
+        <div class="tier-feat">Manual nutrition logging</div>
+        <div class="tier-feat">Too Good To Go access</div>
+        <div class="tier-feat">Basic weekly planner</div>
+        <div class="tier-feat">Personal calorie goal</div>
+      </div>
+      <div class="tier-card featured">
+        <div class="tier-badge" style="color:var(--g);">⭐ Most popular</div>
+        <div class="tier-name">Pro</div>
+        <div class="tier-price">£4.99 <span>/ month</span></div>
+        <div class="tier-feat">Unlimited AI recipes</div>
+        <div class="tier-feat">Snap-to-track macros</div>
+        <div class="tier-feat">Ocado EV delivery integration</div>
+        <div class="tier-feat">Smart portion calculator</div>
+        <div class="tier-feat">Weekly coupons and deals</div>
+        <div class="tier-feat">Sustainability dashboard</div>
+        <div style="margin-top:8px;padding:8px 10px;background:var(--gl);border-radius:8px;font-size:13px;color:var(--g);font-weight:500;line-height:1.45;">🎓 Students get Pro for just <strong>£2.99/mo</strong> via UNiDAYS or Student Beans</div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-badge" style="color:var(--am);">Premium</div>
+        <div class="tier-name">Family</div>
+        <div class="tier-price">£8.99 <span>/ month</span></div>
+        <div class="tier-feat">Up to 5 user profiles</div>
+        <div class="tier-feat">Shared meal planning</div>
+        <div class="tier-feat">Priority Ocado delivery slots</div>
+        <div class="tier-feat">Family grocery lists</div>
+        <div class="tier-feat">All Pro features included</div>
+      </div>
+    </div>
+
+    <!-- ROADMAP -->
+    <div class="slide-title" style="margin-top:22px;">12-month roadmap</div>
+    <div class="slide-sub">From idea to launch to scale</div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-phase">Month 1–2 · Build</div><div class="tl-title">Core app development begins</div><div class="tl-desc">Hire
+ dev team, finalise UI, integrate AI recipe and macro APIs, build Ocado 
+and Too Good To Go connections. Recruit 500 beta testers from 
+universities.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-phase">Month 3 · Test</div><div class="tl-title">Closed beta at 3 UK universities</div><div class="tl-desc">Fix
+ bugs, refine AI accuracy, test snap-to-track macro and portion 
+calculator. Gather testimonials and video content for launch campaign.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-phase">Month 4 · Launch</div><div class="tl-title">Public launch on App Store and Google Play</div><div class="tl-desc">TikTok
+ campaign live. Freshers week pop-ups. Influencer partnerships 
+activated. Unidays listing live. Target: 2,000 downloads in week one.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-phase">Month 6 · Grow</div><div class="tl-title">Supermarket meal kit launch</div><div class="tl-desc">First meal kit partner live. Family tier launched. Referral programme drives organic growth. Too Good To Go national rollout.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-phase">Month 12 · Scale</div><div class="tl-title">Series A fundraise and EU expansion</div><div class="tl-desc">10,000+
+ active users. Pitch to VCs for Series A. Explore expansion to Ireland 
+and Netherlands. Voice assistant and wearable integration added.</div></div>
+    </div>
+
+    <div class="g2" style="margin-top:22px;">
+      <div class="card"><div class="card-head"><div class="icon-circle ig" style="font-size:15px;font-weight:800;color:#3B6D11;">?</div><h3>Why us?</h3></div><p class="card-text">We
+ are the target audience. We know exactly what 16–25 year olds want — 
+because we are them. No team understands this market better.</p></div>
+      <div class="card"><div class="card-head"><div class="icon-circle it" style="font-size:15px;font-weight:800;color:#0F6E56;">!</div><h3>Why now?</h3></div><p class="card-text">AI
+ is ready. The cost-of-living crisis made food waste personal. Gen Z 
+expects brands to have values. The timing has never been better.</p></div>
+    </div>
+    <div class="hbox" style="text-align:center;">
+      <div style="display:flex;justify-content:center;margin-bottom:4px;"><svg viewBox="2 8 476 164" height="54" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#4caf6e"></stop><stop offset="100%" style="stop-color:#2e8b4f"></stop></linearGradient><linearGradient id="cg3" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3a9e5c"></stop><stop offset="100%" style="stop-color:#2a7a44"></stop></linearGradient></defs><rect x="10" y="15" width="460" height="150" rx="28" ry="28" fill="#1a4d2e"></rect><g transform="translate(44,46)"><rect x="0" y="18" width="96" height="72" rx="14" ry="14" fill="url(#cg3)"></rect><rect x="30" y="10" width="36" height="16" rx="8" ry="8" fill="#2a7a44"></rect><circle cx="48" cy="54" r="24" fill="#1f6338"></circle><circle cx="48" cy="54" r="18" fill="#26753f"></circle><circle cx="48" cy="54" r="12" fill="#0d3d20"></circle><circle cx="43" cy="49" r="4" fill="white" opacity="0.18"></circle><circle cx="41" cy="47" r="2" fill="white" opacity="0.28"></circle><circle cx="82" cy="28" r="5" fill="#a8e6bb" opacity="0.85"></circle><g stroke="#a8e6bb" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"><path d="M8 30 L8 24 L14 24"></path><path d="M88 30 L88 24 L82 24"></path><path d="M8 78 L8 84 L14 84"></path><path d="M88 78 L88 84 L82 84"></path></g><g transform="translate(72,-4) rotate(-20)"><path d="M0,0 C6,-18 24,-24 28,-14 C32,-4 18,12 0,0 Z" fill="url(#lg3)"></path><path d="M0,0 C10,-8 22,-12 28,-14" stroke="#a8e6bb" stroke-width="1.2" fill="none" opacity="0.7"></path></g></g><text x="172" y="108" font-family="Georgia,serif" font-size="52" font-weight="700" letter-spacing="-1" fill="#ffffff">Snap</text><text x="298" y="108" font-family="Georgia,serif" font-size="52" font-weight="400" letter-spacing="-1" fill="#4caf6e">Bite</text></svg></div>
+      <p style="font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--g);opacity:0.7;margin-bottom:10px;">Stop wasting food. Start eating smarter.</p>
+      <p>Stop wasting food. Start eating smarter.<br>Join us in making sustainability the default — not the exception.</p>
+      <p style="margin-top:16px;font-size:17px;font-weight:500;color:var(--g);">Thank you.</p>
+    </div>
+  </div>
+
+  <!-- 6 ADVERT -->
+  <div class="slide" id="slide-6">
+    <div class="slide-title">Our advert</div>
+    <div class="slide-sub">See SnapBite in action — our launch campaign video</div>
+    <div style="background:#1a3a0a;border-radius:18px;overflow:hidden;position:relative;max-width:420px;aspect-ratio:9/16;max-height:70vh;margin:0 auto;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
+      <div style="font-size:56px;">🎬</div>
+      <p style="color:#C0DD97;font-size:16px;font-weight:600;text-align:center;padding:0 24px;">Launch Campaign Video</p>
+      <p style="color:rgba(255,255,255,0.5);font-size:13px;text-align:center;padding:0 32px;">Video available on request</p>
+    </div>
+    <div class="hbox" style="text-align:center;margin-top:22px;">
+      <div style="display:flex;justify-content:center;margin-bottom:4px;"><svg viewBox="2 8 476 164" height="48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lgF" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#4caf6e"></stop><stop offset="100%" style="stop-color:#2e8b4f"></stop></linearGradient><linearGradient id="cgF" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3a9e5c"></stop><stop offset="100%" style="stop-color:#2a7a44"></stop></linearGradient></defs><rect x="10" y="15" width="460" height="150" rx="28" ry="28" fill="#1a4d2e"></rect><g transform="translate(44,46)"><rect x="0" y="18" width="96" height="72" rx="14" ry="14" fill="url(#cgF)"></rect><rect x="30" y="10" width="36" height="16" rx="8" ry="8" fill="#2a7a44"></rect><circle cx="48" cy="54" r="24" fill="#1f6338"></circle><circle cx="48" cy="54" r="18" fill="#26753f"></circle><circle cx="48" cy="54" r="12" fill="#0d3d20"></circle><circle cx="43" cy="49" r="4" fill="white" opacity="0.18"></circle><circle cx="41" cy="47" r="2" fill="white" opacity="0.28"></circle><circle cx="82" cy="28" r="5" fill="#a8e6bb" opacity="0.85"></circle><g stroke="#a8e6bb" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"><path d="M8 30 L8 24 L14 24"></path><path d="M88 30 L88 24 L82 24"></path><path d="M8 78 L8 84 L14 84"></path><path d="M88 78 L88 84 L82 84"></path></g><g transform="translate(72,-4) rotate(-20)"><path d="M0,0 C6,-18 24,-24 28,-14 C32,-4 18,12 0,0 Z" fill="url(#lgF)"></path><path d="M0,0 C10,-8 22,-12 28,-14" stroke="#a8e6bb" stroke-width="1.2" fill="none" opacity="0.7"></path></g></g><text x="172" y="108" font-family="Georgia,serif" font-size="52" font-weight="700" letter-spacing="-1" fill="#ffffff">Snap</text><text x="298" y="108" font-family="Georgia,serif" font-size="52" font-weight="400" letter-spacing="-1" fill="#4caf6e">Bite</text></svg></div>
+      <p style="font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--g);opacity:0.7;margin-bottom:10px;">Stop wasting food. Start eating smarter.</p>
+      <p>Stop wasting food. Start eating smarter.<br>Join us in making sustainability the default — not the exception.</p>
+    </div>
+  </div>
+
+</div><!-- end slide-area -->
+
+<div class="bottombar">
+  <button class="btn" onclick="prev()">← Previous</button>
+  <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width: 14.3%;"></div></div>
+  <button class="btn primary" onclick="next()">Next →</button>
+</div>
+
+</div><!-- end shell -->
+
+<script>
+var cur=0,total=7,sex='m';
+function goTo(i){
+  document.getElementById('slide-'+cur).classList.remove('active');
+  document.querySelectorAll('.nb')[cur].classList.remove('active');
+  cur=i;
+  document.getElementById('slide-'+cur).classList.add('active');
+  document.querySelectorAll('.nb')[cur].classList.add('active');
+  document.getElementById('slide-ctr').textContent=(cur+1)+' / '+total;
+  document.getElementById('prog-fill').style.width=(((cur+1)/total)*100).toFixed(1)+'%';
+  document.getElementById('slide-area').scrollTop=0;
+}
+function next(){if(cur<total-1)goTo(cur+1);}
+function prev(){if(cur>0)goTo(cur-1);}
+document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();prev();}
+});
+function setSex(s){
+  sex=s;
+  document.getElementById('sb-m').classList.toggle('on',s==='m');
+  document.getElementById('sb-f').classList.toggle('on',s==='f');
+  calc();
+}
+function calc(){
+  var age=parseInt(document.getElementById('r-age').value);
+  var ht=parseInt(document.getElementById('r-ht').value);
+  var wt=parseInt(document.getElementById('r-wt').value);
+  document.getElementById('o-age').textContent=age;
+  document.getElementById('o-ht').textContent=ht;
+  document.getElementById('o-wt').textContent=wt;
+  var bmr=sex==='m'?(10*wt)+(6.25*ht)-(5*age)+5:(10*wt)+(6.25*ht)-(5*age)-161;
+  var tdee=Math.round(bmr*1.4);
+  var pro=Math.round(wt*2);
+  var pasta=Math.round(tdee/6.3);
+  document.getElementById('r-cal').textContent=tdee;
+  document.getElementById('r-pro').textContent=pro;
+  document.getElementById('r-pasta').textContent=pasta;
+}
+</script>
+
+
+</body></html>
